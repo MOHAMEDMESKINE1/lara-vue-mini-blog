@@ -5766,6 +5766,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5784,21 +5795,17 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/register', this.user).then(function (response) {
-        if (response.data.status == "error") {
-          _this.errors = response.data.errors;
-        } else if (response.data.status == "success") {
-          Toast.fire({
-            icon: 'success',
-            title: 'user registred  successfully'
-          }); // clear fields 
+        Toast.fire({
+          icon: 'success',
+          title: 'user registred  successfully'
+        }); // clear fields 
 
-          _this.errors = [];
-          _this.user = {
-            name: '',
-            email: '',
-            password: ''
-          };
-        }
+        _this.errors = [];
+        _this.user = {
+          name: '',
+          email: '',
+          password: ''
+        };
       });
     }
   }
@@ -33713,7 +33720,7 @@ var render = function () {
                 _vm._v("Register User"),
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group w-50 mx-auto mb-3" }, [
+              _c("div", { staticClass: "form-group w-75 mx-auto mb-3" }, [
                 _c("label", { attrs: { for: "name" } }, [_vm._v("Name:")]),
                 _vm._v(" "),
                 _c("input", {
@@ -33728,7 +33735,6 @@ var render = function () {
                   staticClass: "form-control",
                   attrs: {
                     type: "text",
-                    required: "",
                     id: "name",
                     placeholder: "Enter name",
                   },
@@ -33742,9 +33748,17 @@ var render = function () {
                     },
                   },
                 }),
+                _vm._v(" "),
+                _vm.user.name.length <= 0
+                  ? _c("small", { staticClass: "text-danger fw-bold" }, [
+                      _vm._v(
+                        "\r\n                        required name\r\n                    "
+                      ),
+                    ])
+                  : _vm._e(),
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group w-50 mx-auto mb-3" }, [
+              _c("div", { staticClass: "form-group w-75 mx-auto mb-3" }, [
                 _c("label", { attrs: { for: "email" } }, [_vm._v("Email:")]),
                 _vm._v(" "),
                 _c("input", {
@@ -33759,7 +33773,6 @@ var render = function () {
                   staticClass: "form-control",
                   attrs: {
                     type: "email",
-                    required: "",
                     id: "email",
                     placeholder: "Enter email",
                   },
@@ -33773,9 +33786,17 @@ var render = function () {
                     },
                   },
                 }),
+                _vm._v(" "),
+                _vm.user.email.length <= 0
+                  ? _c("small", { staticClass: "text-danger fw-bold" }, [
+                      _vm._v(
+                        "\r\n                        required email\r\n                    "
+                      ),
+                    ])
+                  : _vm._e(),
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group w-50 mx-auto mb-3" }, [
+              _c("div", { staticClass: "form-group w-75 mx-auto mb-3" }, [
                 _c("label", { attrs: { for: "pwd" } }, [_vm._v("Password:")]),
                 _vm._v(" "),
                 _c("input", {
@@ -33790,7 +33811,6 @@ var render = function () {
                   staticClass: "form-control",
                   attrs: {
                     type: "password",
-                    required: "",
                     id: "pwd",
                     placeholder: "Enter password",
                   },
@@ -33804,6 +33824,24 @@ var render = function () {
                     },
                   },
                 }),
+                _vm._v(" "),
+                _vm.user.password.length <= 0
+                  ? _c("small", { staticClass: "text-danger fw-bold mb-3" }, [
+                      _vm._v(
+                        "\r\n                        required password \r\n                    "
+                      ),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _vm.user.password.length < 5
+                  ? _c("small", { staticClass: "text-warning fw-bold" }, [
+                      _vm._v(
+                        "\r\n                        password must have at least 6 chars\r\n                    "
+                      ),
+                    ])
+                  : _vm._e(),
               ]),
               _vm._v(" "),
               _vm._m(0),
@@ -33819,7 +33857,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group w-50 mx-auto mb-3 my-2" }, [
+    return _c("div", { staticClass: "form-group w-75 mx-auto mb-3 my-2" }, [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },

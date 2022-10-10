@@ -12,21 +12,21 @@ class UserController extends Controller
     public function register(Request $request){
         
         // // validation
-        // $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(),[
 
-        //     "name" => "required",
-        //     "email" => "required|email",
-        //     "password" => "required|min:6",
-        // ]);
+            "name" => "required",
+            "email" => "required|email",
+            "password" => "required|min:6",
+        ]);
 
         // errors
-        // if($validator->fails()){
+        if($validator->fails()){
 
-        //     return response()->json([
-        //         "status"=>"error",
-        //         "errors"=> $validator,
-        //     ]);
-        // }
+            return response()->json([
+                "status"=>"error",
+                "errors"=> $validator,
+            ]);
+        }
 
         // create user 
         // $user =  User::create([
@@ -43,11 +43,11 @@ class UserController extends Controller
 
         $user->save();
 
-        // // success
-        // return response()->json([
-        //     "status"=> "success",
-        //     "data" => $user
-        //  ]);
+        // success
+        return response()->json([
+            "status"=> "success",
+            "data" => $user
+         ]);
 
     }
     public function login()
@@ -56,7 +56,7 @@ class UserController extends Controller
         $credentials = request(['email', 'password']);
 
         // if logged
-        // if (!$token = auth::attempt(['email'=>$request->email,'password'=>$request->password])) {
+        // if (!$token = Auth::attempt(['email'=>$request->email,'password'=>$request->password])) {
         if ($token = auth()->attempt($credentials)) {
 
             return response()->json([ 'status' => 'success', 'token'=>$token ]);
